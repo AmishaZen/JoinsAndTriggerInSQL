@@ -144,9 +144,11 @@ use WFA3DotNet
 
 --11.	List the name of the customer who has the largest balance (in any account). 
 			
-			select  tc.CustomerName,MAX(act.Balance) as HighestBalance
-			from TblCustomer tc inner join TblAccount act
-			on tc.CustomerID=act.CustomerID
+			select  tc.CustomerName
+			from  TblCustomer 
+			 tc inner join TblAccount act
+			on tc.CustomerID=act.CustomerID 
+			where act.Balance= (Select MAX(Balance) from TblAccount)
 			
 --12.	List customers who have a ‘Money Market’ account. 
 				select cst.CustomerName
